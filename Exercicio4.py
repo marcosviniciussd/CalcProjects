@@ -1,9 +1,8 @@
 numero = int(input("Digite um numero inteiro: "))
 
-div = numero % 3
-
+div = numero % 5
 if(div == 0):
-    print("Fizz")
+    print("Buzz")
 
 else:
     print(numero)
