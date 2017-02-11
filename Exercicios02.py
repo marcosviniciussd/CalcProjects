@@ -5,5 +5,5 @@ def maximo(num1, num2):
     else:
         return num2
 
-print(maximo(6, 5))
+print(maximo(-1, -5))
         
