@@ -3,15 +3,15 @@ def main():
     mensagem = vogal(letra)
     print(mensagem)
 
-def vogal(letra):
+def vogal(let):
     verdadeiro = True
     falso = False
 
-    if(letra == 'a' or letra == "A" 
-    or letra == "e" or letra == "E" 
-    or letra == "i" or letra == "I"
-    or letra == "o" or letra == "O" 
-    or letra == "u" or letra == "U"):
+    if(let == 'a' or let == "A" 
+    or let == "e" or let == "E" 
+    or let == "i" or let == "I"
+    or let == "o" or let == "O" 
+    or let == "u" or let == "U"):
         return verdadeiro
 
     else:
