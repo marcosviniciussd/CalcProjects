@@ -2,15 +2,18 @@ rodada = 0
 vez = 0
 n = 0
 m = 0
-escolha = int(input("\n\nESCOLHA ABAIXO UMA MODALIDADE: \n1 - Partida \n2 - Campeonato: \n"))
+def main():
+    escolha = int(input("\n\nESCOLHA ABAIXO UMA MODALIDADE: \n1 - Partida \n2 - Campeonato: \n"))
 
-if(escolha == 1):
-    print("Você escolheu partida!!!")
-    print("\n\n*****  Iniciando o Jogo  *****")
+    if(escolha == 1):
+        print("Você escolheu partida!!!")
+        print("\n\n*****  Iniciando o Jogo  *****")
+        partida()
 
-else:
-    print("Você escolheu campeonato!!!")
-    print("\n\n*****  Iniciando o Jogo  *****")
+    else:
+        print("Você escolheu campeonato!!!")
+        print("\n\n*****  Iniciando o Jogo  *****")
+        campeonato()
 
 # *** Função iniciar partida ***
 
@@ -46,9 +49,11 @@ def partida():
                 usuario_escolhe_jogada(m, n)
                 vez = vez + 1
 
-
-        
-    
+def campeonato():
+    part = 0
+    while(part < 3):
+        partida()
+        part = part + 1
 
 # *** Função computador joga ***
 def computador_escolhe_jogada(limite, pecas):
@@ -101,4 +106,4 @@ def usuario_escolhe_jogada(limite, pecas):
 
 # *** Chamando as funções ***
 rodada = rodada + 1
-partida()
+main()
