@@ -1,5 +1,5 @@
 
-escolha = int(input("\n\nESCOLHA ABAIXO UMA MODALIDADE: \n1 - Partida \n2 - Campeonato"))
+escolha = int(input("\n\nESCOLHA ABAIXO UMA MODALIDADE: \n1 - Partida \n2 - Campeonato: \n"))
 
 if(escolha == 1):
     print("Você escolheu partida!!!")
@@ -9,35 +9,50 @@ else:
     print("Você escolheu campeonato!!!")
     print("\n\n*****  Iniciando o Jogo  *****")
 
+# *** Função iniciar partida ***
 def partida():
     n = int(input("Quantas peças: "))
     m = int(input("limite de peças por jogada: "))
 
-    if(n % m + 1 == 0):
-        computador_escolhe_jogada(m, n)
+    while(n != 0):
+        if(n % (m + 1) == 0):
+            computador_escolhe_jogada(m, n)
     
-    else:
-        usuario_escolhe_jogada(m, n)
+        else:
+            usuario_escolhe_jogada(m, n)
+    
+    
 
-
-def computador_escolhe_jogada(m, n):
+# *** Função computador joga ***
+def computador_escolhe_jogada(limite, pecas):
     print("n\Computador inicie o jogo!")
 
-    computador = (m - n) + 1
-    pecas = (n - m)
+    retira = limite - 1
+    restante = pecas - retira
 
-    print("Computador retirou ", pecas, " peças")
-    print("Agora restam apenas ", pecas, " no tabuleiro!")
+    if(restante % (limite+1) != 0):
+        retira =  limite
+        n = pecas - limite
+    n = pecas - retira
 
-def usuario_escolhe_jogada(n, m):
+    
+
+    print("Computador retirou ", retira, " peças")
+    print("Agora restam apenas ", n, " no tabuleiro!")
+
+# *** Função usuario joga ***
+def usuario_escolhe_jogada(limite, pecas):
     print("\nJogador inicie o jogo!")
     retira = int(input("Retire uma quatidade de peças: "))
 
-    jogador = m - n
-    pecas = (n - m)
-    jogada1 = (n - m) + 1
+    if(retira > limite):
+        print("Quantidade Invalida!!! Tente Novamente")
+        usuario_escolhe_jogada(limite, pecas)
 
-    print("Jogador retirou ", jogador, "peças.")
-    print("Agora restam apenas ", pecas, "no tabuleiro!")
+    n = pecas - retira
 
+    print("Jogador retirou ", retira, "peças.")
+    print("Agora restam apenas ", n, "no tabuleiro!")
+
+# *** Chamando as funções ***
 partida()
