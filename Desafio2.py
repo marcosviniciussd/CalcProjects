@@ -1,4 +1,7 @@
-
+rodada = 0
+vez = 0
+n = 0
+m = 0
 escolha = int(input("\n\nESCOLHA ABAIXO UMA MODALIDADE: \n1 - Partida \n2 - Campeonato: \n"))
 
 if(escolha == 1):
@@ -10,21 +13,45 @@ else:
     print("\n\n*****  Iniciando o Jogo  *****")
 
 # *** Função iniciar partida ***
+
+
 def partida():
+    global rodada
+    global vez
+    global n
+    global m
+
     n = int(input("Quantas peças: "))
     m = int(input("limite de peças por jogada: "))
-
-    while(n != 0):
+    
+    if(rodada == 0): 
         if(n % (m + 1) == 0):
-            computador_escolhe_jogada(m, n)
-    
-        else:
+            vez = 0
+            rodada = 1
             usuario_escolhe_jogada(m, n)
-    
+            
+        else:
+            vez = 1
+            rodada = 1
+            computador_escolhe_jogada(m, n)
+
+    else:
+            
+        while( n != 0):
+            if(vez % 2 == 0):
+                computador_escolhe_jogada(m, n)
+                vez = vez + 1
+
+            else:
+                usuario_escolhe_jogada(m, n)
+                vez = vez + 1
+        
     
 
 # *** Função computador joga ***
 def computador_escolhe_jogada(limite, pecas):
+    global n
+    global m
     print("n\Computador inicie o jogo!")
 
     retira = limite - 1
@@ -32,7 +59,7 @@ def computador_escolhe_jogada(limite, pecas):
 
     if(restante % (limite+1) != 0):
         retira =  limite
-        n = pecas - limite
+        
     n = pecas - retira
 
     
@@ -42,6 +69,9 @@ def computador_escolhe_jogada(limite, pecas):
 
 # *** Função usuario joga ***
 def usuario_escolhe_jogada(limite, pecas):
+    global n
+    global m
+    
     print("\nJogador inicie o jogo!")
     retira = int(input("Retire uma quatidade de peças: "))
 
@@ -55,4 +85,5 @@ def usuario_escolhe_jogada(limite, pecas):
     print("Agora restam apenas ", n, "no tabuleiro!")
 
 # *** Chamando as funções ***
+rodada = rodada + 1
 partida()
