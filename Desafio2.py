@@ -45,6 +45,8 @@ def partida():
             else:
                 usuario_escolhe_jogada(m, n)
                 vez = vez + 1
+
+
         
     
 
@@ -52,26 +54,36 @@ def partida():
 def computador_escolhe_jogada(limite, pecas):
     global n
     global m
+    multiplo = False
     print("n\Computador inicie o jogo!")
 
-    retira = limite - 1
-    restante = pecas - retira
+    while(limite > 0 ):
+        retira = 1
+        restante = pecas - retira
 
-    if(restante % (limite+1) != 0):
-        retira =  limite
-        
-    n = pecas - retira
-
+        if(restante % (m+1) == 0):
+            multiplo = True
+            n = pecas - retira
+            break
+        limite = limite - 1
+        retira = retira + 1
     
+    if(multiplo ==  False):
+        retira =  m
+        n = pecas - retira
+        
 
     print("Computador retirou ", retira, " peças")
     print("Agora restam apenas ", n, " no tabuleiro!")
+
+    if(n == 0):
+        print("Computador Venceu, vOU TE COMER")
 
 # *** Função usuario joga ***
 def usuario_escolhe_jogada(limite, pecas):
     global n
     global m
-    
+
     print("\nJogador inicie o jogo!")
     retira = int(input("Retire uma quatidade de peças: "))
 
@@ -83,6 +95,9 @@ def usuario_escolhe_jogada(limite, pecas):
 
     print("Jogador retirou ", retira, "peças.")
     print("Agora restam apenas ", n, "no tabuleiro!")
+
+    if(n == 0):
+        print("Jogador Venceu, vOU TE DAR")
 
 # *** Chamando as funções ***
 rodada = rodada + 1
